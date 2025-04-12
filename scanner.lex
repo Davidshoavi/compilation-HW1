@@ -10,7 +10,8 @@ using namespace std;
 digit      ([0-9])
 letter     ([a-zA-Z])
 digit_and_letter ([a-zA-Z0-9])
-whitespace ([ \t\n])
+whitespace ([ \t\n\r])
+string (([^\\\"\n\r]|\\[\\\"nrt0]|\\x[2-6][0-9a-fA-F]|\\x7[0-9a-eA-E])*)
 
 %%
 
@@ -54,14 +55,10 @@ continue {output::printToken(yylineno, CONTINUE, yytext); return CONTINUE;}
 [1-9]{digit}* {output::printToken(yylineno, NUM, yytext); return NUM;}
 0b {output::printToken(yylineno, NUM_B, yytext); return NUM_B;}
 [1-9]{digit}*b {output::printToken(yylineno, NUM_B, yytext); return NUM_B;}
-\"([^\\\"\n\r]|\\[\\\"nrt0]|\\x[2-6][0-9a-fA-F]|\\x7[0-9a-eA-E])*\" return STRING;
-\"     \"
-
-
-
-
-
-
-
+\"{string}\" return STRING;
+\"{string}[\n\r]? output::errorUnclosedString();
+\"{string}\\([nrt\\]|x[^2-7]|x7[^0-9a-eA-E]){string}\" output::errorUndefinedEscape(yytext);
+{whitespace} ;
+. output::errorIllegalChar(yytext[0]);
 
 %%
