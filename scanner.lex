@@ -1,8 +1,7 @@
 %{
 #include "tokens.hpp"
 #include "output.hpp"
-using namespace std;
-void printIllegalEscapeChar(const char* yytext, int yyleng);
+void printIllegalEscapeChar(const char* yytext, size_t yyleng);
 %}
 
 %option yylineno
@@ -64,7 +63,7 @@ continue {output::printToken(yylineno, CONTINUE, yytext); return CONTINUE;}
 
 %%
 
-void printIllegalEscapeChar(const char* yytext, int yyleng) {
+void printIllegalEscapeChar(const char* yytext, size_t yyleng) {
     for (int i = 0; i < yyleng - 1; ++i) {
         if (yytext[i] == '\\') {
             char esc = yytext[i + 1];
