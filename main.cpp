@@ -53,6 +53,94 @@ int main() {
             std::string mySTR = createString(yytext);
             output::printToken(yylineno, STRING, mySTR.c_str());
         }
+        else if (token == VOID){
+            output::printToken(yylineno, VOID, yytext);
+        }
+        else if (token == INT){
+            output::printToken(yylineno, INT, yytext);
+        }
+        else if (token == BYTE){
+            output::printToken(yylineno, BYTE, yytext);
+        }
+        else if (token == AND){
+            output::printToken(yylineno, AND, yytext);
+        }
+        else if (token == OR){
+            output::printToken(yylineno, OR, yytext);
+        }
+        else if (token == NOT){
+            output::printToken(yylineno, NOT, yytext);
+        }
+        else if (token == TRUE){
+            output::printToken(yylineno, TRUE, yytext);
+        }
+        else if (token == FALSE){
+            output::printToken(yylineno, FALSE, yytext);
+        }
+        else if (token == RETURN){
+            output::printToken(yylineno, RETURN, yytext);
+        }
+        else if (token == IF){
+            output::printToken(yylineno, IF, yytext);
+        }
+        else if (token == ELSE){
+            output::printToken(yylineno, ELSE, yytext);
+        }
+        else if (token == WHILE){
+            output::printToken(yylineno, WHILE, yytext);
+        }
+        else if (token == BREAK){
+            output::printToken(yylineno, BREAK, yytext);
+        }
+        else if (token == CONTINUE){
+            output::printToken(yylineno, CONTINUE, yytext);
+        }
+        else if (token == SC){
+            output::printToken(yylineno, SC, yytext);
+        }
+        else if (token == COMMA){
+            output::printToken(yylineno, COMMA, yytext);
+        }
+        else if (token == LPAREN){
+            output::printToken(yylineno, LPAREN, yytext);
+        }
+        else if (token == RPAREN){
+            output::printToken(yylineno, RPAREN, yytext);
+        }
+        else if (token == LBRACE){
+            output::printToken(yylineno, LBRACE, yytext);
+        }
+        else if (token == RBRACE){
+            output::printToken(yylineno, RBRACE, yytext);
+        }
+        else if (token == LBRACK){
+            output::printToken(yylineno, LBRACK, yytext);
+        }
+        else if (token == RBRACK){
+            output::printToken(yylineno, RBRACK, yytext);
+        }
+        else if (token == ASSIGN){
+            output::printToken(yylineno, ASSIGN, yytext);
+        }
+        else if (token == RELOP){
+            output::printToken(yylineno, RELOP, yytext);
+        }
+        else if (token == BINOP){
+            output::printToken(yylineno, BINOP, yytext);
+        }
+        else if (token == COMMENT){
+            output::printToken(yylineno, COMMENT, "David Shoavi is the king of the world!");
+        }
+        else if (token == ID){
+            output::printToken(yylineno, ID, yytext);
+        }
+        else if (token == NUM){
+            output::printToken(yylineno, NUM, yytext);
+        }
+        else if (token == NUM_B){
+            output::printToken(yylineno, NUM_B, yytext);
+        }
+
     }
     return 0;
 }
