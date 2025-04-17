@@ -1,7 +1,9 @@
 %{
 #include "tokens.hpp"
 #include "output.hpp"
-void printIllegalEscapeChar(const char* yytext, size_t yyleng);
+#include <stdio.h>
+#include <string.h>
+void printIllegalEscapeChar(const char* yytext, int yyleng);
 %}
 
 %option yylineno
@@ -63,17 +65,15 @@ continue                               return CONTINUE;
 
 %%
 
-void printIllegalEscapeChar(const char* yytext, size_t yyleng) {
+void printIllegalEscapeChar(const char* yytext, int yyleng) {
     for (int i = 0; i < yyleng - 1; ++i) {
         if (yytext[i] == '\\') {
             char esc = yytext[i + 1];
 
-            // escape חוקיים רגילים
-            bool valid_simple = (esc == 'n' || esc == 'r' || esc == 't' ||
-                                 esc == '0' || esc == '\\' || esc == '"');
+            int valid_simple = (esc == 'n' || esc == 'r' || esc == 't' ||
+                                esc == '\\' || esc == '"');
 
-            // escape חוקי מסוג \xDD לפי טווח חוקי
-            bool valid_hex = false;
+            int valid_hex = 0;
             if (esc == 'x' && i + 3 < yyleng) {
                 char hi = yytext[i + 2];
                 char lo = yytext[i + 3];
@@ -82,19 +82,20 @@ void printIllegalEscapeChar(const char* yytext, size_t yyleng) {
                         (lo >= '0' && lo <= '9') ||
                         (lo >= 'a' && lo <= 'e') ||
                         (lo >= 'A' && lo <= 'E')))) {
-                    valid_hex = true;
+                    valid_hex = 1;
                 }
             }
 
-            // טיפול בשגיאה
             if (!valid_simple && !valid_hex) {
                 if (esc == 'x') {
-                    std::string seq = "x";
-                    if (i + 2 < yyleng) seq += yytext[i + 2];
-                    if (i + 3 < yyleng) seq += yytext[i + 3];
+                    char seq[4] = "x";
+                    if (i + 2 < yyleng) seq[1] = yytext[i + 2]; else seq[1] = '\0';
+                    if (i + 3 < yyleng) seq[2] = yytext[i + 3]; else seq[2] = '\0';
+                    seq[3] = '\0';
                     output::errorUndefEscape(seq);
                 } else {
-                    output::errorUndefEscape(esc);
+                    char single[2] = { esc, '\0' };
+                    output::errorUndefEscape(single);
                 }
             }
         }

@@ -566,17 +566,11 @@ char *yytext;
 #line 2 "scanner.lex"
 #include "tokens.hpp"
 #include "output.hpp"
-void printIllegalEscapeChar(const char* yytext, size_t yyleng);
-#undef TRUE
-#undef FALSE
-#undef NOT
-#undef AND
-#undef OR
-#undef RETURN
-#undef IF
-#undef ELSE
-#line 578 "lex.yy.c"
-#line 579 "lex.yy.c"
+#include <stdio.h>
+#include <string.h>
+void printIllegalEscapeChar(const char* yytext, int yyleng);
+#line 572 "lex.yy.c"
+#line 573 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -793,10 +787,10 @@ YY_DECL
 		}
 
 	{
-#line 24 "scanner.lex"
+#line 18 "scanner.lex"
 
 
-#line 799 "lex.yy.c"
+#line 793 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -865,238 +859,238 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 26 "scanner.lex"
-{output::printToken(yylineno, VOID, yytext); return VOID;}
+#line 20 "scanner.lex"
+return VOID;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 27 "scanner.lex"
-{output::printToken(yylineno, INT, yytext); return INT;}
+#line 21 "scanner.lex"
+return INT;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 28 "scanner.lex"
-{output::printToken(yylineno, BYTE, yytext); return BYTE;}
+#line 22 "scanner.lex"
+return BYTE;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 29 "scanner.lex"
-{output::printToken(yylineno, BOOL, yytext); return BOOL;}
+#line 23 "scanner.lex"
+return BOOL;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 30 "scanner.lex"
-{output::printToken(yylineno, AND, yytext); return AND;}
+#line 24 "scanner.lex"
+return AND;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 31 "scanner.lex"
-{output::printToken(yylineno, OR, yytext); return OR;}
+#line 25 "scanner.lex"
+return OR;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 32 "scanner.lex"
-{output::printToken(yylineno, NOT, yytext); return NOT;}
+#line 26 "scanner.lex"
+return NOT;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 33 "scanner.lex"
-{output::printToken(yylineno, TRUE, yytext); return TRUE;}
+#line 27 "scanner.lex"
+return TRUE;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 34 "scanner.lex"
-{output::printToken(yylineno, FALSE, yytext); return FALSE;}
+#line 28 "scanner.lex"
+return FALSE;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 35 "scanner.lex"
-{output::printToken(yylineno, RETURN, yytext); return RETURN;}
+#line 29 "scanner.lex"
+return RETURN;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 36 "scanner.lex"
-{output::printToken(yylineno, IF, yytext); return IF;}
+#line 30 "scanner.lex"
+return IF;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 37 "scanner.lex"
-{output::printToken(yylineno, ELSE, yytext); return ELSE;}
+#line 31 "scanner.lex"
+return ELSE;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 38 "scanner.lex"
-{output::printToken(yylineno, WHILE, yytext); return WHILE;}
+#line 32 "scanner.lex"
+return WHILE;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 39 "scanner.lex"
-{output::printToken(yylineno, BREAK, yytext); return BREAK;}
+#line 33 "scanner.lex"
+return BREAK;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 40 "scanner.lex"
-{output::printToken(yylineno, CONTINUE, yytext); return CONTINUE;}
+#line 34 "scanner.lex"
+return CONTINUE;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 41 "scanner.lex"
-{output::printToken(yylineno, SC, yytext); return SC;}
+#line 35 "scanner.lex"
+return SC;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 42 "scanner.lex"
-{output::printToken(yylineno, COMMA, yytext); return COMMA;}
+#line 36 "scanner.lex"
+return COMMA;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 43 "scanner.lex"
-{output::printToken(yylineno, LPAREN, yytext); return LPAREN;}
+#line 37 "scanner.lex"
+return LPAREN;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 44 "scanner.lex"
-{output::printToken(yylineno, RPAREN, yytext); return RPAREN;}
+#line 38 "scanner.lex"
+return RPAREN;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 45 "scanner.lex"
-{output::printToken(yylineno, LBRACE, yytext); return LBRACE;}
+#line 39 "scanner.lex"
+return LBRACE;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 46 "scanner.lex"
-{output::printToken(yylineno, RBRACE, yytext); return RBRACE;}
+#line 40 "scanner.lex"
+return RBRACE;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 47 "scanner.lex"
-{output::printToken(yylineno, LBRACK, yytext); return LBRACK;}
+#line 41 "scanner.lex"
+return LBRACK;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 48 "scanner.lex"
-{output::printToken(yylineno, RBRACK, yytext); return RBRACK;}
+#line 42 "scanner.lex"
+return RBRACK;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 49 "scanner.lex"
-{output::printToken(yylineno, ASSIGN, yytext); return ASSIGN;}
+#line 43 "scanner.lex"
+return ASSIGN;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 50 "scanner.lex"
-{output::printToken(yylineno, RELOP, yytext); return RELOP;}
+#line 44 "scanner.lex"
+return RELOP;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 51 "scanner.lex"
-{output::printToken(yylineno, RELOP, yytext); return RELOP;}
+#line 45 "scanner.lex"
+return RELOP;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 52 "scanner.lex"
-{output::printToken(yylineno, RELOP, yytext); return RELOP;}
+#line 46 "scanner.lex"
+return RELOP;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 53 "scanner.lex"
-{output::printToken(yylineno, RELOP, yytext); return RELOP;}
+#line 47 "scanner.lex"
+return RELOP;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 54 "scanner.lex"
-{output::printToken(yylineno, RELOP, yytext); return RELOP;}
+#line 48 "scanner.lex"
+return RELOP;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 55 "scanner.lex"
-{output::printToken(yylineno, RELOP, yytext); return RELOP;}
+#line 49 "scanner.lex"
+return RELOP;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 56 "scanner.lex"
-{output::printToken(yylineno, BINOP, yytext); return BINOP;}
+#line 50 "scanner.lex"
+return BINOP;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 57 "scanner.lex"
-{output::printToken(yylineno, BINOP, yytext); return BINOP;}
+#line 51 "scanner.lex"
+return BINOP;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 58 "scanner.lex"
-{output::printToken(yylineno, BINOP, yytext); return BINOP;}
+#line 52 "scanner.lex"
+return BINOP;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 59 "scanner.lex"
-{output::printToken(yylineno, BINOP, yytext); return BINOP;}
+#line 53 "scanner.lex"
+return BINOP;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 60 "scanner.lex"
-{output::printToken(yylineno, COMMENT, "David Shoavi is the king of the world!"); return COMMENT;}
+#line 54 "scanner.lex"
+return COMMENT;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 61 "scanner.lex"
-{output::printToken(yylineno, ID, yytext); return ID;}
+#line 55 "scanner.lex"
+return ID;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 62 "scanner.lex"
-{output::printToken(yylineno, NUM, yytext); return NUM;}
+#line 56 "scanner.lex"
+return NUM;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 63 "scanner.lex"
-{output::printToken(yylineno, NUM, yytext); return NUM;}
+#line 57 "scanner.lex"
+return NUM;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 64 "scanner.lex"
-{output::printToken(yylineno, NUM_B, yytext); return NUM_B;}
+#line 58 "scanner.lex"
+return NUM_B;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 65 "scanner.lex"
-{output::printToken(yylineno, NUM_B, yytext); return NUM_B;}
+#line 59 "scanner.lex"
+return NUM_B;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 66 "scanner.lex"
-{return STRING;}
+#line 60 "scanner.lex"
+return STRING;
 	YY_BREAK
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 67 "scanner.lex"
-{output::errorUnclosedString();}
+#line 61 "scanner.lex"
+output::errorUnclosedString();
 	YY_BREAK
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 68 "scanner.lex"
+#line 62 "scanner.lex"
 {printIllegalEscapeChar(yytext, yyleng);}
 	YY_BREAK
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 69 "scanner.lex"
+#line 63 "scanner.lex"
 {;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 70 "scanner.lex"
+#line 64 "scanner.lex"
 {output::errorIllegalChar(yytext[0]);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 72 "scanner.lex"
+#line 66 "scanner.lex"
 ECHO;
 	YY_BREAK
-#line 1099 "lex.yy.c"
+#line 1093 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2113,20 +2107,18 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 72 "scanner.lex"
+#line 66 "scanner.lex"
 
 
-void printIllegalEscapeChar(const char* yytext, size_t yyleng) {
+void printIllegalEscapeChar(const char* yytext, int yyleng) {
     for (int i = 0; i < yyleng - 1; ++i) {
         if (yytext[i] == '\\') {
             char esc = yytext[i + 1];
 
-            // escape חוקיים רגילים
-            bool valid_simple = (esc == 'n' || esc == 'r' || esc == 't' ||
-                                 esc == '0' || esc == '\\' || esc == '"');
+            int valid_simple = (esc == 'n' || esc == 'r' || esc == 't' ||
+                                esc == '\\' || esc == '"');
 
-            // escape חוקי מסוג \xDD לפי טווח חוקי
-            bool valid_hex = false;
+            int valid_hex = 0;
             if (esc == 'x' && i + 3 < yyleng) {
                 char hi = yytext[i + 2];
                 char lo = yytext[i + 3];
@@ -2135,19 +2127,20 @@ void printIllegalEscapeChar(const char* yytext, size_t yyleng) {
                         (lo >= '0' && lo <= '9') ||
                         (lo >= 'a' && lo <= 'e') ||
                         (lo >= 'A' && lo <= 'E')))) {
-                    valid_hex = true;
+                    valid_hex = 1;
                 }
             }
 
-            // טיפול בשגיאה
             if (!valid_simple && !valid_hex) {
                 if (esc == 'x') {
-                    std::string seq = "x";
-                    if (i + 2 < yyleng) seq += yytext[i + 2];
-                    if (i + 3 < yyleng) seq += yytext[i + 3];
+                    char seq[4] = "x";
+                    if (i + 2 < yyleng) seq[1] = yytext[i + 2]; else seq[1] = '\0';
+                    if (i + 3 < yyleng) seq[2] = yytext[i + 3]; else seq[2] = '\0';
+                    seq[3] = '\0';
                     output::errorUndefEscape(seq);
                 } else {
-                    output::errorUndefEscape(esc);
+                    char single[2] = { esc, '\0' };
+                    output::errorUndefEscape(single);
                 }
             }
         }
