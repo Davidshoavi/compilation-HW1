@@ -1,5 +1,7 @@
 %{
+#define yyleng __disabled_yyleng
 #include "tokens.hpp"
+#undef yyleng
 #include "output.hpp"
 #include <stdio.h>
 #include <string.h>
@@ -61,7 +63,7 @@ continue                               return CONTINUE;
 \"{string}[\n\r]?                      output::errorUnclosedString();
 \"{string}\\([nrt\\]|x[^2-7]|x7[^0-9a-eA-E]){string}\" {printIllegalEscapeChar(yytext, yyleng);}
 {whitespace} {;}
-. {output::errorIllegalChar(yytext[0]);}
+. {output::errorUnknownChar(yytext[0]);}
 
 %%
 
@@ -92,10 +94,10 @@ void printIllegalEscapeChar(const char* yytext, int yyleng) {
                     if (i + 2 < yyleng) seq[1] = yytext[i + 2]; else seq[1] = '\0';
                     if (i + 3 < yyleng) seq[2] = yytext[i + 3]; else seq[2] = '\0';
                     seq[3] = '\0';
-                    output::errorUndefEscape(seq);
+                    output::errorUndefinedEscape(seq);
                 } else {
                     char single[2] = { esc, '\0' };
-                    output::errorUndefEscape(single);
+                    output::errorUndefinedEscape(single);
                 }
             }
         }
